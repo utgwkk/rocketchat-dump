@@ -74,6 +74,9 @@ messageBsonPipe.on('end', () => {
             <meta charset="utf-8">
             <pre>${data}</pre>
         `;
-        fs.writeFile(destinationPath, output);
+        fs.writeFile(destinationPath, output, (err) => {
+            if (err) throw err;
+            console.log(`Successfully dumped the chat log of room: ${roomName}`);
+        });
     }
 });
